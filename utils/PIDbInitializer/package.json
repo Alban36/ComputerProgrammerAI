@@ -1,0 +1,16 @@
+{
+  "name": "pidbinitializer",
+  "version": "1.0.0",
+  "description": "Program that initializes the mongoDB with data from a file.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "database",
+    "PI",
+    "mongoDB"
+  ],
+  "author": "achauvin",
+  "license": "GPL-3.0-or-later"
+}
