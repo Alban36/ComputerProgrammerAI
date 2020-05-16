@@ -1,23 +1,24 @@
 [
-  {
+   {
     "name": "add",
     "syntax": "{in1} + {in2}",
     "instructionType": "FUNCTION",
     "inputs": 
     [
       {
-        "inputType": "INT",
+        "type": "INT",
         "name": "in1"
       },
       {
-        "inputType": "INT",
+
+        "type": "INT",
         "name": "in2"
       }
     ],
     "outputs":
     [
       {
-        "inputType": "INT",
+        "type": "INT",
         "name": "out1"
       }
     ]
@@ -29,16 +30,16 @@
     "inputs": 
     [
       {
-        "inputType": "INT",
+        "type": "INT",
         "name": "in1"
       }
     ],
     "outputs":
     [
       {
-        "inputType": "INT",
+        "type": "INT",
         "name": "out1"
       }
     ]
   }
-] 
+]
