@@ -1,10 +1,10 @@
 const express = require('express');
 const cors = require('cors');
-const piDbAccessor = require('./piDbAccessor.js');
+const PiDbAccessor = require('./piDbAccessor.js');
 
 const app = express();
 app.use(cors());
-const accessor = new StageAccessor();
+const accessor = new PiDbAccessor();
 
 app.get('/ping', (req, res) => res.send('pong'));
 

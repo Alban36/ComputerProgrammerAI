@@ -7,7 +7,7 @@ const dbName = 'local'; // Database name
 const collectionName = 'instructions'; // Collection Name
  
 /** Class definition */
-class StageAccessor {
+class PiDbAccessor {
   /** Constructor */
   constructor(){
     // Create a new MongoClient
@@ -123,7 +123,7 @@ class StageAccessor {
   }
 }
 
-module.exports = StageAccessor;
+module.exports = PiDbAccessor;
 
 
 
