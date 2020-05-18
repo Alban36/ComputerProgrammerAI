@@ -9,47 +9,66 @@ const accessor = new PiDbAccessor();
 app.get('/ping', (req, res) => res.send('pong'));
 
 /**
- * @api {get} /stages/{number} get the stage information
- * @apiName StageService
- * @apiDescription This endpoint will get the information of a specific stage
- * @apiGroup stages
+ * @api {get} /findInstructions find instructions that match the criteria specified
+ * @apiName PiDbService
+ * @apiDescription This endpoint will search and retrieve programming instructions
+ * @apiGroup ProgrammingInstruction
  *
- * @apiParam (params) {number} number
+ * @apiParam (params) input the list of the input types of the inputs (optional)
+ * @apiParam (params) output the list of the output types of the inputs (optional)
  *
  * @apiExample {curl} Example usage:
- *   curl -X GET -H "Content-Type: application/json" http://address:port/stages/1
+ *   curl -X GET -H "Content-Type: application/json" -d '{"inputs": ["INT","INT"] ,"outputs":["INT"]}' 'http://address:port/findInstructions
  *
  * @apiSuccessExample {json} Success-Response:
  *   HTTP/1.1 200 OK
- *   {
- *      "number":"1",
- *      "start":{"name":"Saint John's","latitude":1.0032,"longitude":43.000},
- *      "end":{"name":"Clarenville","latitude":1.0032,"longitude":43.000},
- *      "waypoints":[
- *          {"number":0,"latitude":1.323,"longitude":43.45345},
- *          ...
- *      ]
- *   }
+ *   [
+ *    {
+ *     "name": "add",
+ *     "syntax": "{in1} + {in2}",
+ *     "instructionType": "FUNCTION",
+ *     "inputs": 
+ *     [
+ *       {
+ *         "type": "INT",
+ *         "name": "in1"
+ *       },
+ *       {
+ *
+ *         "type": "INT",
+ *         "name": "in2"
+ *       }
+ *     ],
+ *     "outputs":
+ *     [
+ *       {
+ *         "type": "INT",
+ *         "name": "out1"
+ *       }
+ *     ]
+ *    }
+ *  ]
  */
-app.get('/stages/:number', async (req, res) => {
-  if(req.params.hasOwnProperty('number')) {
-    const stageNumber = Number(req.params.number);
+app.get('/FindInstructions', async (req, res) => {
+  console.log(req.query);
+  if((req.query.hasOwnProperty('input'))||(req.query.hasOwnProperty('output'))) {
+    //const stageNumber = Number(req.params.number);
 
     try{
-      accessor.getStage(stageNumber, function(err,stage){
+      
+      /*accessor.getStage(stageNumber, function(err,stage){
         if(err){
           res.status(404).json({
             success: false,
             message: err.message
           });
         }
-        else{
+        else{*/
           res.status(200).json({
-            success: true,
-            data: stage
-          });
+            success: true
+          });/*
         }
-      });
+      });*/
     }
     catch(err){
       res.status(500).json({
@@ -61,7 +80,7 @@ app.get('/stages/:number', async (req, res) => {
   else {
     res.status(400).json({
       success: false,
-      message: 'Incorrect query: expected syntax is http://address:port/stages/{stage number}'
+      message: 'Incorrect query: expected syntax is http://address:port/findInstructions?input=<type>&output=<type>'
     });
   }
 });

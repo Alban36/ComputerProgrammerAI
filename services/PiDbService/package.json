@@ -1,5 +1,5 @@
 {
-  "name": "pidbaccessor",
+  "name": "pidbservice",
   "version": "1.0.0",
   "description": "service that provide access to the programming instruction database",
   "main": "index.js",
