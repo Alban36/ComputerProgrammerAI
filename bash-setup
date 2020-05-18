@@ -1,0 +1,9 @@
+#!/bin/bash
+
+echo Adding nodejs to PATH env variable ...
+export PATH=/usr/local/lib/nodejs/node-v12.16.3-linux-x64/bin:$PATH
+echo done.
+echo
+echo Starting MongoDb instance ...
+sudo systemctl start mongod
+echo done.
